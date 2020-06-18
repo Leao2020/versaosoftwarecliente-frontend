@@ -16,7 +16,7 @@ function App() {
     return (
         <table>
             {lista.map(item => (
-                <tr key={Item.id}>
+                <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>{item.cliente}</td>
                     <td>{item.versao}</td>
