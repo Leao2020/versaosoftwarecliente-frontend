@@ -78,7 +78,7 @@ function App() {
             </Button>
         </Container>
         <Dialog open={open} onClose={closeModal} fullWidth={true} maxWidth="sm">
-            <DialogTitle id="form-dialog-title">Nova Tarefa</DialogTitle>
+            <DialogTitle id="form-dialog-title">Novo Cadastro</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     Informe o Cliente, Software e Versão que deseja inserir.
