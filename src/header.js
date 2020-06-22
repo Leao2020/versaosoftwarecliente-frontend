@@ -7,7 +7,7 @@ function Header() {
         <AppBar position="fixed">
             <Toolbar>
                 <Typography variant="h6">
-                    Softwares nos Clientes
+                   # Controle de Clientes, Softwares e Versão
                 </Typography>
             </Toolbar>
         </AppBar>

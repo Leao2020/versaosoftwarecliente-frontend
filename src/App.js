@@ -19,10 +19,12 @@ function App() {
 
     const [ lista, setLista ] = useState([]); // imutabilidade
     const [ open, setOpen ] = useState(false);
-    const [ tarefa, setTarefa ] = useState('');
+    const [ cliente, setCliente ] = useState('');
+    const [ aplicativo, setAplicativo ] = useState('');
+    const [ versao, setVersao ] = useState('');
 
     function loadData() { 
-            api.get('/softwares').then((response) => {         // OK  
+            api.get('/softwares').then((response) => {          
             const itens = response.data;
             setLista(itens);
         });
@@ -35,17 +37,21 @@ function App() {
     // function closeModal() { setOpen(false); }
     const closeModal = () => setOpen(false);
 
-    function addTarefa() { 
-         const name = tarefa;
+    function addTarefa() {                                                  // Aqui que não funciona. Apenas lê e atualiza apenas nome
+         const client = cliente;                                               // Eu preciso enviar para a tabela softwares: cliente, software e versao                               
+         const ap = aplicativo;                                               // Eu preciso enviar para a tabela softwares: cliente, software e versao                               
+         const ver = versao;                                               // Eu preciso enviar para a tabela softwares: cliente, software e versao                               
         
-            api.post('/softwares', { name: name }).then((response) => {
-            setTarefa('');
+            api.post('/softwares', { cliente: client, app: ap, versao: ver }).then((response) => {
+            setCliente('');
+            setAplicativo('');
+            setVersao('');
             setOpen(false);
             loadData();
         })
      }
 
-     function deleteTarefa(id) {                                           //OK  
+     function deleteTarefa(id) {                                            
          api.delete(`/softwares/${id}`).then((response) => { 
             loadData()
          })
@@ -86,12 +92,30 @@ function App() {
                 <TextField
                     autoFocus
                     margin="dense"
-                    id="name"
-                    label="Digite as informações"
-                    type="email"
+                    id="cliente"
+                    label="Digite o cliente"
+                    type="text"
                     fullWidth
-                    value={tarefa}
-                    onChange={e => setTarefa(e.target.value)}
+                    value={cliente}
+                    onChange={e => setCliente(e.target.value)}           // Aqui faz a leitura do Dialog. Só lê uma informação. Eu preciso ler 3 informações.
+                />
+                <TextField
+                    margin="dense"
+                    id="app"
+                    label="Digite o aplicativo"
+                    type="text"
+                    fullWidth
+                    value={aplicativo}
+                    onChange={e => setAplicativo(e.target.value)}           // Aqui faz a leitura do Dialog. Só lê uma informação. Eu preciso ler 3 informações.
+                />
+                <TextField
+                    margin="dense"
+                    id="versao"
+                    label="Digite a versão"
+                    type="text"
+                    fullWidth
+                    value={versao}
+                    onChange={e => setVersao(e.target.value)}           // Aqui faz a leitura do Dialog. Só lê uma informação. Eu preciso ler 3 informações.
                 />
             </DialogContent>
             <DialogActions>
