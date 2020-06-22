@@ -37,10 +37,10 @@ function App() {
     // function closeModal() { setOpen(false); }
     const closeModal = () => setOpen(false);
 
-    function addTarefa() {                                                  // Aqui que não funciona. Apenas lê e atualiza apenas nome
-         const client = cliente;                                               // Eu preciso enviar para a tabela softwares: cliente, software e versao                               
-         const ap = aplicativo;                                               // Eu preciso enviar para a tabela softwares: cliente, software e versao                               
-         const ver = versao;                                               // Eu preciso enviar para a tabela softwares: cliente, software e versao                               
+    function addTarefa() {                                                  
+         const client = cliente;                                                                             
+         const ap = aplicativo;                                                                              
+         const ver = versao;                                                                              
         
             api.post('/softwares', { cliente: client, app: ap, versao: ver }).then((response) => {
             setCliente('');
@@ -97,7 +97,7 @@ function App() {
                     type="text"
                     fullWidth
                     value={cliente}
-                    onChange={e => setCliente(e.target.value)}           // Aqui faz a leitura do Dialog. Só lê uma informação. Eu preciso ler 3 informações.
+                    onChange={e => setCliente(e.target.value)}           
                 />
                 <TextField
                     margin="dense"
@@ -106,7 +106,7 @@ function App() {
                     type="text"
                     fullWidth
                     value={aplicativo}
-                    onChange={e => setAplicativo(e.target.value)}           // Aqui faz a leitura do Dialog. Só lê uma informação. Eu preciso ler 3 informações.
+                    onChange={e => setAplicativo(e.target.value)}           
                 />
                 <TextField
                     margin="dense"
@@ -115,7 +115,7 @@ function App() {
                     type="text"
                     fullWidth
                     value={versao}
-                    onChange={e => setVersao(e.target.value)}           // Aqui faz a leitura do Dialog. Só lê uma informação. Eu preciso ler 3 informações.
+                    onChange={e => setVersao(e.target.value)}          
                 />
             </DialogContent>
             <DialogActions>
